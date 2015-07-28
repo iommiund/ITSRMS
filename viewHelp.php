@@ -43,8 +43,11 @@
 							
 							if ($topic) {
 							
+							//GET SPECIAL HTML CHARACHTERS AND SET VARIABLE TO LATER CONVERT INTO CONTENT
+							$content = htmlspecialchars($topic ['help_content'], ENT_QUOTES);
+							
 								echo "<H1>" . $topic ['help_subject'] . "</H1>";
-								echo "<p>" . $topic ['help_content'] . "</p>";
+								echo "<p>" . str_replace(array("\r\n", "\n"), array("<br />", "<br />"), $content) . "</p>";
 							
 							} else {
 							
