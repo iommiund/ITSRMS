@@ -41,12 +41,18 @@
 							<input type="password" name="password" placeholder="Password" required="required" min="4"/>
 							<input type="submit" value="REGISTER" />
 						</form>
+						<br>
+						<div class="form-link">
 						<?php
 							if (isset($_GET['emptyfield'])) {
 								echo "<div id='error'>One or more fields were empty, try again!</div>";
-							} else
+							} else if (isset($_GET['uExists'])) {
+								echo "<div id='error'>A user with this username already exists</div>";
+							} else if (isset($_GET['eExists'])) {
+								echo "<div id='error'>A user with this email already exists</div>";
+							}
 						?>
-
+						</div>
 					</div>
 				</div>
 			</div>

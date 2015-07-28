@@ -64,14 +64,38 @@
 									$name=$_POST['name'];
 									$surname=$_POST['surname'];
 									$email=$_POST['email'];
-									$username=$_POST['username'];
+									$aUsername=$_POST['username'];
 									$password=md5($_POST['password']);
 									//CONNECT TO DATABASE
 									include_once ("dbc.php");
 									
+									//CHECK IF USERNAME ALREADY EXISTS
+									$getUserCount = mysql_query ("select count(*) from users where username = \"$aUsername\"");
+									$userCount = mysql_result ($getUserCount,0);
+									
+									if ($userCount != 0) {
+									
+										header ('location: addUser.php?uExists');
+										die();
+										exit();
+									
+									}
+									
+									//CHECK IF EMAIL ALREADY EXISTS
+									$getEmailCount = mysql_query ("select count(*) from users where email = \"$email\"");
+									$emailCount = mysql_result ($getEmailCount,0);
+									
+									if ($emailCount != 0) {
+									
+										header ('location: addUser.php?eExists');
+										die();
+										exit();
+									
+									}									
+									
 					    			//INSERT DATA INTO TABLE        					
 					    			$insert = "insert into users (user_name, user_surname, email, username, user_password) values 
-					    						( \"$name\", \"$surname\", \"$email\", \"$username\", \"$password\")";
+					    						( \"$name\", \"$surname\", \"$email\", \"$aUsername\", \"$password\")";
 					    			$ret = mysql_query ($insert, $conn);
 					    			
 					    			if ($ret) {
