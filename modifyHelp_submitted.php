@@ -62,7 +62,7 @@
 									
 									} else {
 									
-										echo mysql_error();
+										echo "<h1>".mysql_error()."</h1>";
 									
 									}
 																							    		
