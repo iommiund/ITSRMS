@@ -35,7 +35,7 @@
 													
 									if ($result != 1) {
 									
-										$getNormalTopics = mysql_query ("SELECT help_id, help_subject FROM help WHERE help_level_id = '1'");
+										$getNormalTopics = mysql_query ("SELECT help_id, help_subject FROM help WHERE help_level_id = '1' order by help_id asc");
 										
 										while ($normalTopics = mysql_fetch_array ($getNormalTopics)) {
 										
@@ -46,7 +46,7 @@
 								  					
 									} else if ($result == 1) {
 									
-										$getAllTopics = mysql_query ("SELECT help_id, help_subject FROM help");
+										$getAllTopics = mysql_query ("SELECT help_id, help_subject FROM help order by help_id asc");
 										
 										while ($allTopics = mysql_fetch_array ($getAllTopics)) {
 										
