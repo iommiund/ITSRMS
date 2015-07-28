@@ -32,7 +32,7 @@
 				<div class="container">
 					<div class="form-style">
 						<p><b>Tip:</b> Delete a help topic by selecting it's subject.</p>
-						<h1>Delete a New Help Topic</h1>
+						<h1>Delete a Help Topic</h1>
 	
 						<form action="deleteHelp_submitted.php" method="post">
 							<select name="helpSubject">
