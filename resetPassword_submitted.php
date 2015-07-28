@@ -23,22 +23,36 @@
 		$oldPassword=md5($_POST['oldPassword']);
 		$newPassword=md5($_POST['newPassword']);
 		
-		//Query to change password
-		$resetPassword = mysql_query ("update users set user_password = \"$newPassword\" where username = \"$username\" and user_password = \"$oldPassword\"");
-		
-			if ($resetPassword) {
-				
-				header ('location: index.php?resetPassword');
-				session_destroy();
+		//Authenticate user before changing password
+		$get=mysql_query ("select count(user_id) from users where username=\"$username\" and user_password=\"$oldPassword\"");
+		$result=mysql_result($get,0);
+							
+			if ($result!=1) {
+		  		
+				header ('location: resetPassword.php?error');
 				die();
-				exit();		
-			
+				exit();
+		  					
 			} else {
-			
-				echo mysql_error();	
-			
-			}
-
+		  					
+				//Query to change password
+				$resetPassword = mysql_query ("update users set user_password = \"$newPassword\" where username = \"$username\" and user_password = \"$oldPassword\"");
+				
+					if ($resetPassword) {
+						
+						header ('location: index.php?resetPassword');
+						session_destroy();
+						die();
+						exit();		
+					
+					} else {
+					
+						echo mysql_error();	
+					
+					}
+	  		
+	  		}
+		
 	} else {
 	
 		header ('location: resetPassword.php?emptyfield');

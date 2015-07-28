@@ -28,6 +28,8 @@
 							<?php
 								if (isset($_GET['emptyfield'])) {
 									echo "<div id='error'>One or more fields were empty, try again!</div>";
+								} else if (isset($_GET['error'])) {
+									echo "<div id='error'>Incorrect Password!!!!</div>";
 								}
 							?>
 						</div>
