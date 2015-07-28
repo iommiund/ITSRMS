@@ -54,7 +54,7 @@
 									$helpContent=$_POST['helpContent'];
 									$helpLevel=$_POST['helpLevel'];
 									
-									$modifyHelpTopic = mysql_query ("UPDATE help SET help_subject = \"$subject\", help_content = \"$helpContent\", help_level_id = (SELECT help_level_id FROM help_levels WHERE help_level = \"$helpLevel\")");
+									$modifyHelpTopic = mysql_query ("UPDATE help SET help_subject = \"$subject\", help_content = \"$helpContent\", help_level_id = (SELECT help_level_id FROM help_levels WHERE help_level = \"$helpLevel\") where help_subject = \"$subject\"");
 									
 									if ($modifyHelpTopic) {
 									
