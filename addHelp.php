@@ -48,12 +48,14 @@
 							<textarea name="helpContent" placeholder="Ex: If you wish to add a new resource........." required="required" maxlength="60000"></textarea>
 							<input type="submit" value="ADD" />
 						</form>
+						<br>
+						<div class="form-link">
 						<?php
 							if (isset($_GET['emptyfield'])) {
 								echo "<div id='error'>One or more fields were empty, try again!</div>";
 							} else
-						?>
-
+						?>						
+						</div>
 					</div>
 				</div>
 			</div>
