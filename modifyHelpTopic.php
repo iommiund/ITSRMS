@@ -85,13 +85,14 @@
 			
 							}	
 						?>
-
+						<br>
+						<div class="form-link">
 						<?php
 							if (isset($_GET['emptyfield'])) {
 								echo "<div id='error'>One or more fields were empty, try again!</div>";
 							} else
 						?>
-
+						</div>
 					</div>
 				</div>
 			</div>
