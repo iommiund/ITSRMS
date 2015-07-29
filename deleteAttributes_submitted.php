@@ -68,7 +68,18 @@
 						    				echo "<h1><b>". $value."</b> deleted</h1>";
 						    			}
 						    			else {
-						    				echo "<h1>Something Went Wrong: " .mysql_error(); + "</h1>";
+						    				
+						    				$getBrandCount = mysql_query ("select count(*) from resources where resource_brand = \"$value\"");
+						    				$brandCount = mysql_result($getBrandCount,0);
+						    				
+						    				if ($brandCount > 0) {
+						    				
+						    					header ('location: deleteAttributes.php?used');
+												die();
+												exit();
+						    				
+						    				}
+
 						    			}
 									
 									}	
@@ -95,7 +106,18 @@
 						    				echo "<h1><b>". $value."</b> deleted</h1>";
 						    			}
 						    			else {
-						    				echo "<h1>Something Went Wrong: " .mysql_error(); + "</h1>";
+						    				
+						    				$getTypeCount = mysql_query ("select count(*) from resources where resource_type = \"$value\"");
+						    				$typeCount = mysql_result($getTypeCount,0);
+						    				
+						    				if ($typeCount > 0) {
+						    				
+						    					header ('location: deleteAttributes.php?used');
+												die();
+												exit();
+						    				
+						    				}
+
 						    			}
 									
 									}	
@@ -122,7 +144,18 @@
 						    				echo "<h1><b>". $value."</b> deleted</h1>";
 						    			}
 						    			else {
-						    				echo "<h1>Something Went Wrong: " .mysql_error(); + "</h1>";
+						    				
+						    				$getModelCount = mysql_query ("select count(*) from resources where resource_model = \"$value\"");
+						    				$modelCount = mysql_result($getModelCount,0);
+						    				
+						    				if ($modelCount > 0) {
+						    				
+						    					header ('location: deleteAttributes.php?used');
+												die();
+												exit();
+						    				
+						    				}
+
 						    			}
 									
 									}	
@@ -149,7 +182,18 @@
 						    				echo "<h1><b>". $value."</b> deleted</h1>";
 						    			}
 						    			else {
-						    				echo "<h1>Something Went Wrong: " .mysql_error(); + "</h1>";
+						    				
+						    				$getLocationCount = mysql_query ("select count(*) from resource_history where resource_location = \"$value\"");
+						    				$locationCount = mysql_result($getLocationCount,0);
+						    				
+						    				if ($locationCount > 0) {
+						    				
+						    					header ('location: deleteAttributes.php?used');
+												die();
+												exit();
+						    				
+						    				}
+
 						    			}
 									
 									}	

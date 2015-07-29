@@ -47,7 +47,10 @@
 										echo "<div id='error'>You must not leave this field empty!</div>";
 									} else if (isset($_GET['notexist'])) {
 										echo "<div id='error'>The value entered does not exist!</div>";
+									} else if (isset($_GET['used'])) {
+										echo "<div id='error'>The value entered is being used and cannot be deleted!</div>";
 									}
+
 								?>
 							</div>
 							<input type="submit" value="DELETE" />
