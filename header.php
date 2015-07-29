@@ -1,4 +1,5 @@
 <?php
+	//IF THE SESSION USERNAME IS EMPTY, REDIRECT TO LOGIN SCREEN
 	if (empty($_SESSION['username'])) {
 	
 		header ('location: index.php?nologin');

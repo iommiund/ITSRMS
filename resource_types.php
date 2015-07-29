@@ -1,4 +1,5 @@
 <?php
+	//IF THE SESSION USERNAME IS EMPTY, REDIRECT TO LOGIN SCREEN
 	if (empty($_SESSION['username'])) {
 	
 		header ('location: index.php?nologin');
@@ -12,7 +13,7 @@
 	//CONNECT TO DATABASE
 	include_once ("dbc.php");
 	
-	//GET DATA FROM INGREDIENTS TABLE AND INSERT INTO A LIST
+	//GET DATA FROM RESOURCE TYPES TABLE AND INSERT INTO A LIST
 	$getResourceTypes = mysql_query ("SELECT * FROM resource_types order by resource_type asc");
 	
 	while ($allResourceTypes = mysql_fetch_array($getResourceTypes)) {

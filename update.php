@@ -2,6 +2,7 @@
 	include_once ("topSection.php");
 ?>
 <?php
+	//IF THE SESSION USERNAME IS EMPTY, REDIRECT TO LOGIN SCREEN
 	if (empty($_SESSION['username'])) {
 	
 		header ('location: index.php?nologin');
@@ -37,7 +38,7 @@
 											
 											echo "<select name='states'>";
 											
-												//GET DATA FROM INGREDIENTS TABLE AND INSERT INTO A LIST
+												//GET DATA FROM RESOURCE STATES TABLE AND INSERT INTO A LIST
 											$getStates = mysql_query ("SELECT * FROM resource_states order by resource_state asc");
 	
 												while ($allStates = mysql_fetch_array($getStates)) {
@@ -76,7 +77,7 @@
 											
 											echo "<select name='conditions'>";
 											
-												//GET DATA FROM INGREDIENTS TABLE AND INSERT INTO A LIST
+												//GET DATA FROM RESOURCE CONDITIONS TABLE AND INSERT INTO A LIST
 											$getConditions = mysql_query ("SELECT * FROM resource_conditions order by resource_condition asc");
 	
 												while ($allConditions = mysql_fetch_array($getConditions)) {
@@ -117,7 +118,7 @@
 											
 											echo "<select name='statuses'>";
 											
-												//GET DATA FROM INGREDIENTS TABLE AND INSERT INTO A LIST
+												//GET DATA FROM RESOURCE STATUSES TABLE AND INSERT INTO A LIST
 											$getStatuses = mysql_query ("SELECT * FROM resource_statuses order by resource_status asc");
 	
 												while ($allStatuses = mysql_fetch_array($getStatuses)) {
@@ -156,7 +157,7 @@
 											
 											echo "<select name='location'>";
 											
-												//GET DATA FROM INGREDIENTS TABLE AND INSERT INTO A LIST
+												//GET DATA FROM RESOURCE LOCATIONS TABLE AND INSERT INTO A LIST
 											$getLocations = mysql_query ("SELECT * FROM resource_locations order by resource_location asc");
 	
 												while ($allLocations = mysql_fetch_array($getLocations)) {

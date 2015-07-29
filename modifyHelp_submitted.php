@@ -2,6 +2,7 @@
 	include_once ("topSection.php");
 ?>
 <?php
+	//IF THE SESSION USERNAME IS EMPTY, REDIRECT TO LOGIN SCREEN
 	if (empty($_SESSION['username'])) {
 	
 		header ('location: index.php?nologin');
@@ -11,7 +12,7 @@
 	}	
 ?>
 <?php
-//SUPER USER VALIDATION - STANDARD USERS ARE REDIRECTED TO MAIN.PHP
+	//SUPER USER VALIDATION - STANDARD USERS ARE REDIRECTED TO MAIN.PHP
 	$username=$_SESSION['username'];
 	
 	include_once ("dbc.php");	

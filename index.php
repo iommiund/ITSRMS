@@ -21,7 +21,7 @@
 						<input type="password" name="password" placeholder="Password">
 						<input type="submit" name="login" class="login login-submit" value="login">
 					</form>
-					 
+					<!--ERROR MESSAGES-->
 					<div class="reset-password">
 						<?php
 							if (isset($_GET['error'])) {
@@ -32,11 +32,10 @@
 								echo "<div id='error'>You must be logged in!!!!</div>";
 							} else if (isset($_GET['resetPassword'])) {
 								echo "<div id='error'>Login using your new Password</div>";
-							} /*else {
-								echo "<a href='resetPassword.php'>Reset Password</a>";
-							}*/
+							} 
 						?>
 					</div>
+					<!--ERROR MESSAGES END-->
 				</div>
 			</div>
 		</div>

@@ -1,4 +1,5 @@
 <?php
+	//IF THE SESSION USERNAME IS EMPTY, REDIRECT TO LOGIN SCREEN
 	if (empty($_SESSION['username'])) {
 	
 		header ('location: index.php?nologin');
@@ -19,7 +20,7 @@
 	//POPULATE TABLE ROWS WITH DATA FROM DATABASE
 	while ($allTopics = mysql_fetch_array ($getHelpTopics)) {
 			
-		//CREATING TABLE ROWS WITH RECIPE INFORMATION
+		//CREATING TABLE ROWS WITH HELP TOPIC INFORMATION
 		echo "<tr>";
 			echo "<td><a href='modifyHelpTopic.php?id=" . $allTopics['help_id'] . "'>" . $allTopics['help_subject'] . "</a></td>";
 			echo "<td>" . $allTopics['help_level'] . "</td>";					

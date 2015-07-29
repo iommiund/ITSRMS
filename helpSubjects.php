@@ -1,4 +1,5 @@
 <?php
+	//IF THE SESSION USERNAME IS EMPTY, REDIRECT TO LOGIN SCREEN
 	if (empty($_SESSION['username'])) {
 	
 		header ('location: index.php?nologin');
@@ -12,7 +13,7 @@
 	//CONNECT TO DATABASE
 	include_once ("dbc.php");
 	
-	//GET DATA FROM INGREDIENTS TABLE AND INSERT INTO A LIST
+	//GET DATA FROM HELP TABLE AND INSERT INTO A LIST
 	$getSubjects = mysql_query ("SELECT help_id, help_subject FROM help ORDER BY help_subject ASC");
 	
 	while ($allSubjects = mysql_fetch_array($getSubjects)) {

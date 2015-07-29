@@ -1,4 +1,5 @@
 <?php
+	//IF THE SESSION USERNAME IS EMPTY, REDIRECT TO LOGIN SCREEN
 	if (empty($_SESSION['username'])) {
 	
 		header ('location: index.php?nologin');
@@ -19,7 +20,7 @@
 	//POPULATE TABLE ROWS WITH DATA FROM DATABASE
 	while ($latestTransactions = mysql_fetch_array ($getLatestTransactions)) {
 			
-		//CREATING TABLE ROWS WITH RECIPE INFORMATION
+		//CREATING TABLE ROWS WITH LATEST TRANSACTION INFORMATION
 		echo "<tr>";
 			echo "<td>" . $latestTransactions['resource_description'] . "</td>";
 			echo "<td>" . $latestTransactions['resource_serial_number'] . "</td>";

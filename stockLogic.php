@@ -1,4 +1,5 @@
 <?php
+	//IF THE SESSION USERNAME IS EMPTY, REDIRECT TO LOGIN SCREEN
 	if (empty($_SESSION['username'])) {
 	
 		header ('location: index.php?nologin');
@@ -19,7 +20,7 @@
 	//POPULATE TABLE ROWS WITH DATA FROM DATABASE
 	while ($lowStock = mysql_fetch_array ($getLowStock)) {
 			
-		//CREATING TABLE ROWS WITH RECIPE INFORMATION
+		//CREATING TABLE ROWS WITH STOCK INFORMATION
 		echo "<tr>";
 			echo "<td>" . $lowStock['description'] . "</td>";
 			echo "<td>" . $lowStock['location'] . "</td>";			

@@ -2,6 +2,7 @@
 	include_once ("topSection.php");
 ?>
 <?php
+	//IF THE SESSION USERNAME IS EMPTY, REDIRECT TO LOGIN SCREEN
 	if (empty($_SESSION['username'])) {
 	
 		header ('location: index.php?nologin');
@@ -11,7 +12,7 @@
 	}	
 ?>
 <?php
-//SUPER USER VALIDATION - STANDARD USERS ARE REDIRECTED TO MAIN.PHP
+	//SUPER USER VALIDATION - STANDARD USERS ARE REDIRECTED TO MAIN.PHP
 	$username=$_SESSION['username'];
 	
 	include_once ("dbc.php");	
@@ -37,10 +38,9 @@
 		$getCurrentType = mysql_query ("SELECT ut.user_type FROM users u LEFT JOIN user_types ut ON u.user_type_id = ut.user_type_id WHERE u.username = \"$user\"");
 		$currentType = mysql_result ($getCurrentType,0);
 		
-		//echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br>". $currentType;
 	
 		if ($newType == $currentType) {
-			//echo "<br><br><br><br><br><br><br><br><br><br><br><br><br><br>". $currentType . "  |  " . $newType;	
+			
 			//IF THE TYPE IS THE SAME, DISPLAY AN ERROR MESSAGE
 			header ('location: userProfile.php?error');
 			die();

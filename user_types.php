@@ -1,4 +1,5 @@
 <?php
+	//IF THE SESSION USERNAME IS EMPTY, REDIRECT TO LOGIN SCREEN
 	if (empty($_SESSION['username'])) {
 	
 		header ('location: index.php?nologin');
@@ -12,7 +13,7 @@
 	//CONNECT TO DATABASE
 	include_once ("dbc.php");
 	
-	//GET DATA FROM INGREDIENTS TABLE AND INSERT INTO A LIST
+	//GET DATA FROM user types TABLE AND INSERT INTO A LIST
 	$getUserTypes = mysql_query ("SELECT * FROM user_types");
 	
 	while ($allUserTypes = mysql_fetch_array($getUserTypes)) {

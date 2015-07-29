@@ -1,4 +1,5 @@
 <?php
+	//IF THE SESSION USERNAME IS EMPTY, REDIRECT TO LOGIN SCREEN
 	if (empty($_SESSION['username'])) {
 	
 		header ('location: index.php?nologin');
@@ -12,7 +13,7 @@
 	//CONNECT TO DATABASE
 	include_once ("dbc.php");
 	
-	//GET DATA FROM INGREDIENTS TABLE AND INSERT INTO A LIST
+	//GET DATA FROM BRANDS TABLE AND INSERT INTO A LIST
 	$getBrands = mysql_query ("SELECT * FROM resource_brands order by resource_brand asc");
 	
 	while ($allBrands = mysql_fetch_array($getBrands)) {

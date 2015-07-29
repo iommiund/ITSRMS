@@ -2,6 +2,7 @@
 	include_once ("topSection.php");
 ?>
 <?php
+	//IF THE SESSION USERNAME IS EMPTY, REDIRECT TO LOGIN SCREEN
 	if (empty($_SESSION['username'])) {
 	
 		header ('location: index.php?nologin');
@@ -33,7 +34,8 @@
 						<?php 
 						
 							if (empty($_POST['value'])) {
-							
+								
+								//IF THE VALUE IS EMPTY REDIRECT TO PREVIOUS PAGE
 								header ('location: addAttributes.php?emptyfield');
 								die();
 								exit();
