@@ -31,7 +31,7 @@
 			<div class="content">
 				<div class="container">
 					<div class="form-style">
-						<h1>Change User Status</h1>
+						<h1>Change User Profile</h1>
 	
 						<form action="userTypeChange.php" method="post">
 							<label>User:</label> 
