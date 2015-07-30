@@ -65,7 +65,21 @@
 									$currentOwner=$_POST['currentOwner'];
 									$location=$_POST['location'];
 									$value=$_POST['value'];
-																		
+									
+									
+									//CHECK IF RESOURCE ALREADY EXISTS
+				    				$getCountResource = mysql_query ("SELECT COUNT(*) FROM resources r INNER JOIN resource_history rh ON r.resource_id = rh.resource_id WHERE r.resource_serial_number = \"$serialNumber\"");
+				    				$countResource = mysql_result($getCountResource,0);
+				    				
+				    				if ($countResource > 0) {
+				    				
+										header ('location: addResource.php?exists');
+	    								die();
+										exit();
+
+				    				}
+
+									
 					    			//INSERT DATA INTO RESOURCES
 									$newResource = mysql_query ("INSERT INTO resources (resource_brand, resource_type, resource_model, resource_serial_number, resource_creation_date, resource_initial_value) VALUES (\"$brand\", \"$resourceType\", \"$model\", \"$serialNumber\", NOW(), \"$value\")");
 											
@@ -94,7 +108,9 @@
 					    				}
 					    				
 					    			} else {
+					    				
 					    				echo "<h1>Something Went Wrong: " .mysql_error(); + "</h1>";
+					    			
 					    			}
 					    		
 					    		}

@@ -155,7 +155,10 @@
 									echo "<div id='error'>One or more fields were empty, try again!</div>";
 								} else if (isset($_GET['notnumeric'])) {
 									echo "<div id='error'>Current &#8364; Value must only contain numbers</div>";
+								} else if (isset($_GET['exists'])) {
+									echo "<div id='error'>Resource already exists!!!</div>";
 								}
+
 							?>
 						</div>
 					</div>
