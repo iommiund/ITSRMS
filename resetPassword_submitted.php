@@ -35,22 +35,36 @@
 				exit();
 		  					
 			} else {
-		  					
-				//Query to change password
-				$resetPassword = mysql_query ("update users set user_password = \"$newPassword\" where username = \"$username\" and user_password = \"$oldPassword\"");
+		  		
+				//VALIDATE IF THE SAME PASSWORD IS BEING USED
+				$checkOldLikeNew = mysql_query ("select count(*) from users where username = \"$username\" and user_password = \"$newPassword\"");
+				$oldLikeNew = mysql_result($checkOldLikeNew,0);
 				
-					if ($resetPassword) {
+				if ($oldLikeNew > 0) {
+				
+					header ('location: resetPassword.php?oldLikeNew');
+					die();
+					exit();
+				
+				} else {
+			
+					//Query to change password
+					$resetPassword = mysql_query ("update users set user_password = \"$newPassword\" where username = \"$username\" and user_password = \"$oldPassword\"");
+					
+						if ($resetPassword) {
+							
+							header ('location: index.php?resetPassword');
+							session_destroy();
+							die();
+							exit();		
 						
-						header ('location: index.php?resetPassword');
-						session_destroy();
-						die();
-						exit();		
-					
-					} else {
-					
-						echo mysql_error();	
-					
-					}
+						} else {
+						
+							echo mysql_error();	
+						
+						}
+				
+				}
 	  		
 	  		}
 		

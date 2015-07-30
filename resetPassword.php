@@ -31,7 +31,10 @@
 									echo "<div id='error'>One or more fields were empty, try again!</div>";
 								} else if (isset($_GET['error'])) {
 									echo "<div id='error'>Incorrect Password!!!!</div>";
+								} else if (isset($_GET['oldLikeNew'])) {
+									echo "<div id='error'>Your New and Old Passwords are the same, they must be different!</div>";
 								}
+
 							?>
 						</div>
 					</div>
