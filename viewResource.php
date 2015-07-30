@@ -22,11 +22,22 @@
 						
 						echo "<h1>".$allHeader['resource_description']."</h1>";
 						echo "<h2>S/N: ".$allHeader['resource_serial_number']."</h2>";
-											
-						echo "<div class='form-link'>";
-							echo "<a href='update.php?id=".$id."'>Update Resource</a>";
-						echo "</div>";
-								
+						
+
+						//CHECK IF RESOURCE IS DESTROYED AND DISABLE/ENABLE UPDATE RESOURCE BUTTON
+						$checkStatus = mysql_query ("SELECT COUNT(*) FROM (SELECT resource_state FROM resource_history WHERE rh_id = (SELECT MAX(rh_id) FROM resource_history WHERE resource_id = \"$id\")) tmp where tmp.resource_state = 'Destroyed'");
+						$status = mysql_result ($checkStatus,0);
+						
+							if ($status > 0) {
+
+							} else if ($status == 0) {
+							
+								echo "<div class='form-link'>";
+									echo "<a href='update.php?id=".$id."'>Update Resource</a>";
+								echo "</div>";
+							
+							}						
+		
 						echo "<div class='center-table'>";
 							echo "<table>";
 								echo "<tr>";
