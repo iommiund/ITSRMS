@@ -36,6 +36,12 @@
 									echo "<a href='update.php?id=".$id."'>Update Resource</a>";
 								echo "</div>";
 							
+							} else if (isset($_GET['destroyed'])) {
+							
+								echo "<div class='form-link'>";
+									echo "<div id='error'>This resource is Destroyed and cannot be updated!</div>";
+								echo "</div>";
+							
 							}						
 		
 						echo "<div class='center-table'>";

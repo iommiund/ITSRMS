@@ -50,6 +50,18 @@
 									$status=$_POST['statuses'];
 									$location=$_POST['location'];
 									$owner=$_POST['owners'];
+									
+									//CHECK IF RESOURCE IS DESTROYED AND DISABLE/ENABLE UPDATE RESOURCE BUTTON
+									$checkDstatus = mysql_query ("SELECT COUNT(*) FROM (SELECT resource_state FROM resource_history WHERE rh_id = (SELECT MAX(rh_id) FROM resource_history WHERE resource_id = \"$resourceID\")) tmp where tmp.resource_state = 'Destroyed'");
+									$dStatus = mysql_result ($checkDstatus,0);
+									
+										if ($dStatus > 0) {
+										
+											header ('location: viewResource.php?id='.$resourceID.'&destroyed');
+						    				die();
+						    				exit();
+
+										}									
 								
 									//VALIDATE IF ANY CHANGES WERE MADE
 						    		$getRhId = mysql_query ("SELECT rh_id FROM resource_history WHERE resource_id = \"$resourceID\" AND resource_state = \"$state\" AND resource_condition = \"$condition\" AND resource_status = \"$status\" AND owner_description = \"$owner\" AND resource_location = \"$location\"");
