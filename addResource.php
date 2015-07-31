@@ -127,7 +127,7 @@
 						<!--ADDING ADD ATTRIBUTE BUTTON-->
 						<div class="form-link">
 							<?php
-							//SUPER USER VALIDATION - STANDARD USERS ARE REDIRECTED TO MAIN.PHP
+							//SUPER USER VALIDATION - STANDARD USERS ARE NOT SHOWN THE ADD ATTRIBUTES BUTTON
 								$username=$_SESSION['username'];
 								
 								include_once ("dbc.php");	
