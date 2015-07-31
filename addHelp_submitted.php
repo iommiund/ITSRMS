@@ -60,7 +60,22 @@
 									
 									} else {
 									
-										echo mysql_error();
+										
+										//VALIDATE DUPLICATE ENTRY
+										$getSubjectCount = mysql_query ("select count(*) from help where help_subject = \"$subject\"");
+										$subjectCount = mysql_result($getSubjectCount,0);
+										
+										if ($subjectCount > 0) {
+										
+											header ('location: addHelp.php?duplicate');
+											die();
+											exit();
+										
+										} else {
+										
+											echo "<h1>".mysql_error()."</h1>";
+										
+										}
 									
 									}
 																							    		
