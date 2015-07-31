@@ -91,7 +91,9 @@
 						<?php
 							if (isset($_GET['emptyfield'])) {
 								echo "<div id='error'>One or more fields were empty, try again!</div>";
-							} else
+							} else if (isset($_GET['duplicate'])) {
+								echo "<div id='error'>This topic already exists!</div>";
+							}
 						?>
 						</div>
 					</div>

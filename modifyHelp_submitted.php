@@ -55,6 +55,18 @@
 									$helpContent=$_POST['helpContent'];
 									$helpLevel=$_POST['helpLevel'];
 									
+									//VALIDATE DUPLICATE ENTRY
+									$getSubjectCount = mysql_query ("select count(*) from help where help_subject = \"$subject\"");
+									$subjectCount = mysql_result($getSubjectCount,0);
+									
+									if ($subjectCount > 0) {
+									
+										header ('location: modifyHelpTopic.php?id='. $id .'&duplicate');
+										die();
+										exit();
+									
+									}
+									
 									$modifyHelpTopic = mysql_query ("UPDATE help SET help_subject = \"$subject\", help_content = \"$helpContent\", help_level_id = (SELECT help_level_id FROM help_levels WHERE help_level = \"$helpLevel\") where help_subject = \"$subject\"");
 									
 									if ($modifyHelpTopic) {
@@ -62,8 +74,8 @@
 										echo "<h1>Help Topic Modified</h1>";
 									
 									} else {
-									
-										echo "<h1>".mysql_error()."</h1>";
+										
+											echo "<h1>".mysql_error()."</h1>";
 									
 									}
 																							    		
