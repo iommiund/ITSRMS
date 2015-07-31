@@ -67,15 +67,15 @@
 									
 									}
 									
-									$modifyHelpTopic = mysql_query ("UPDATE help SET help_subject = \"$subject\", help_content = \"$helpContent\", help_level_id = (SELECT help_level_id FROM help_levels WHERE help_level = \"$helpLevel\") where help_subject = \"$subject\"");
+									$modifyHelpTopic = mysql_query ("UPDATE help SET help_subject = \"$subject\", help_content = \"$helpContent\", help_level_id = (SELECT help_level_id FROM help_levels WHERE help_level = \"$helpLevel\") where help_id = \"$id\"");
 									
-									if ($modifyHelpTopic) {
+									if (!$modifyHelpTopic) {
 									
-										echo "<h1>Help Topic Modified</h1>";
+										echo "<h1>".mysql_error()."</h1>";
 									
 									} else {
 										
-											echo "<h1>".mysql_error()."</h1>";
+										echo "<h1>Help Topic Modified</h1>";		
 									
 									}
 																							    		
